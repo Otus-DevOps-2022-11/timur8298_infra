@@ -17,3 +17,6 @@ Host someinternalhost
      IdentityFile ~/.ssh/appuser
 #дополнительное задание2
 #настроил валидный сертификат let's encrypt для https://51.250.90.207.sslip.io/
+
+testapp_IP = 62.84.116.26
+testapp_port = 9292
