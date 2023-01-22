@@ -1,6 +1,5 @@
 {
   "yc_folder_id": "someid",
-  "yc_source_image": "somesourceimage",
   "yc_key_path": "/root/key.json.fake",
   "yc_image_family": "ubuntu-1604-lts"
   "yc_platform_id": "standard-v1"
