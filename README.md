@@ -31,3 +31,16 @@ yc compute instance create \
   --metadata serial-port-enable=1 \
   --metadata-from-file user-data=./startup.yaml \
   --metadata serial-port-enable=1
+
+#HW-05 Модели управления инфраструктурой. Подготовка образов с помощью Packer
+Создал сервисный аккаунт и создал  service account key file, сконфигурировал билдер.
+Добавил провижионер, и скрипты для него.
+Проверил образ, установил приложение, проверил его работу.
+Параметризировал шаблон Packer.
+Для запуска выполнить команду из папки packer репозитория:
+packer build -var-file=./packer/variables.json ./packer/ubuntu16.json
+
+Настроил построение  bake-образа, для запуска из папки packer репозитория:
+packer build -var-file=./variables.json ./immutable.json
+
+Создал скрипт для автоматического создания ВМ create-reddit-vm.sh
