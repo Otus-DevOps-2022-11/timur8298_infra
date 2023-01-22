@@ -1,6 +1,6 @@
 {
-  "yc_folder_id": "",
-  "yc_key_path": "./key.json.fake",
-  "yc_image_family": ""
-  "yc_platform_id": ""
+  "yc_folder_id": "123456",
+  "yc_key_path": "./key.json.example",
+  "yc_image_family": "ddd.img"
+  "yc_platform_id": "123456"
 }
