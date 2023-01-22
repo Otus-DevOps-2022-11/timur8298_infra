@@ -5,7 +5,7 @@
             "service_account_key_file": "{{user `yc_key_path`}}",
             "folder_id": "{{user `yc_folder_id`}}",
             "source_image_family": "{{user `yc_image_family`}}",
-            "image_name": "reddit-base-{{timestamp}}",
+            "image_name": "reddit-full-{{timestamp}}",
             "image_family": "reddit-full",
             "ssh_username": "ubuntu",
             "use_ipv4_nat": true,
