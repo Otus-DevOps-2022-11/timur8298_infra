@@ -44,3 +44,12 @@ packer build -var-file=./packer/variables.json ./packer/ubuntu16.json
 packer build -var-file=./variables.json ./immutable.json
 
 Создал скрипт для автоматического создания ВМ create-reddit-vm.sh
+
+#HW-06 Знакомство с Terraform
+Установлен и настроен terraform и провайдер yandex
+Создал  инстанс reddit-app и вывод output var
+Добавил provisioner для автоматической пост настройки сервиса на инстансе
+Добавил vars для параметризации
+Настроил HTTP балансировщик
+Проблема в резализации reddit-app2, у меня почему-то создавался не параллельно, второму инстансу, а также обьему кода, удобству его понимания
+Добавил переменную count кол-во инстансов а также необходимые изменения
