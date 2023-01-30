@@ -1,22 +1,21 @@
-provider "yandex" {
-  service_account_key_file = var.service_account_key_file
-  cloud_id                 = var.cloud_id
-  folder_id                = var.folder_id
-  zone                     = var.zone
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
+  required_version = ">= 0.13"
 }
-
 resource "yandex_compute_instance" "app" {
-  count = var.instances
-  name  = "reddit-app-${count.index}"
+  name  = "reddit-app"
   resources {
     cores  = 2
     memory = 4
   }
-
   boot_disk {
     initialize_params {
       # Указать id образа созданного в предыдущем домашем задании
-      image_id = var.image_id
+      image_id = var.app_disk_image
     }
   }
 
@@ -37,11 +36,11 @@ resource "yandex_compute_instance" "app" {
     # путь до приватного ключа
     private_key = file(var.private_key_path)
   }
-  provisioner "file" {
-    source      = "files/puma.service"
-    destination = "/tmp/puma.service"
-  }
-  provisioner "remote-exec" {
-    script = "files/deploy.sh"
-  }
+  #  provisioner "file" {
+  #    source      = "files/puma.service"
+  #    destination = "/tmp/puma.service"
+  #  }
+  #  provisioner "remote-exec" {
+  #    script = "files/deploy.sh"
+  #  }
 }
