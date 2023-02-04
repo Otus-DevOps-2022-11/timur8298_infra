@@ -53,3 +53,33 @@ packer build -var-file=./variables.json ./immutable.json
 Настроил HTTP балансировщик
 Проблема в резализации reddit-app2, у меня почему-то создавался не параллельно, второму инстансу, а также обьему кода, удобству его понимания
 Добавил переменную count кол-во инстансов а также необходимые изменения
+
+#HW-07 Принципы организации инфраструктурного кода и работа над инфраструктурой в команде на примере Terraform
+Создан образ с приложением: packer build -var-file="./packer/variables.json" ./packer/app.json
+Создан образа с базой данных: packer build -var-file="./packer/variables.json" ./packer/db.json
+Созданы окружения: prod, stage
+Созданы terraform модули: app, db, vpc
+Добавлено использование внешнего backend
+Добавлен deploy приложения: modules/db/files modules/app/files
+Как запустить проект:
+запустить terraform apply в папке с окружением prod или stage проекта
+перейти по ссылке http://IP:9292, где IP адрес можно взять по итогам команды terraform apply (external_ip_address_app = "84.201.156.36)
+
+#HW-08 Управление конфигурацией. Знакомство с Ansible 
+Создан ansible-playbook clone.yml и inventory файл;
+На app была применена комманда, которая клонировала репозиторий с github;
+Была применена команда удаления репозитория reddit через модуль -m command -a 'rm -rf ~/reddit' 
+Выполнен плейбук ansible-playbook clone.yml
+Из-за того, что ~/reddit был удален предыдущей командой, при выполнении плейбука он был установлен снова
+Дописал main.tf в папке stage, для формирования файла инвентори из выходных переменных результата выполнения terraform apply
+resource "local_file" "hosts_cfg" {
+  filename = "../../ansible/inventory_tf"
+  content = <<EOF
+[app]
+appserver ansible_host=${module.app.external_ip_address_app}
+[db]
+dbserver ansible_host=${module.db.external_ip_address_db}
+
+  EOF
+}
+Изменил настройку инвентори в ansible.cfg на новый файл, который сформирован из терраформа, проверил работу.
