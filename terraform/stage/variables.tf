@@ -13,6 +13,7 @@ variable "region_id" {
   default     = "ru-central1"
 }
 variable "public_key_path" {
+  # Описание переменной
   description = "Path to the public key used for ssh access"
 }
 variable "image_id" {
@@ -39,12 +40,7 @@ variable "db_disk_image" {
   description = "disk image for mongodb"
   default     = "reddit-db-base"
 }
-variable "access_key" {
-  description = "key id"
-}
-variable "secret_key" {
-  description = "secret key"
-}
-variable "bucket_name" {
-  description = "bucket name"
+variable "prov" {
+  description = "using provisioner"
+  default     = true
 }

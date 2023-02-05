@@ -1,7 +1,8 @@
+# Create target group
 resource "yandex_lb_target_group" "loadbalancer" {
   name      = "lb-group"
   folder_id = var.folder_id
-  region_id = "ru-central1"
+  region_id = var.region_id
 
   dynamic "target" {
     for_each = yandex_compute_instance.app.*.network_interface.0.ip_address
@@ -11,6 +12,8 @@ resource "yandex_lb_target_group" "loadbalancer" {
     }
   }
 }
+
+
 resource "yandex_lb_network_load_balancer" "lb" {
   name = "loadbalancer"
   type = "external"
@@ -36,4 +39,3 @@ resource "yandex_lb_network_load_balancer" "lb" {
     }
   }
 }
-
