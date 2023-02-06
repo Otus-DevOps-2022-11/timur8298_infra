@@ -29,48 +29,31 @@ module "db" {
   db_disk_image    = var.db_disk_image
   subnet_id        = var.subnet_id
 }
-resource "local_file" "hosts_cfg" {
-  filename = "../../ansible/inventory_tf"
-  content = <<EOF
-[app]
-appserver ansible_host=${module.app.external_ip_address_app}
-[db]
-dbserver ansible_host=${module.db.external_ip_address_db}
-
-  EOF
+resource "local_file" "app_yml" {
+  content = templatefile("../../ansible/templates/hosts.tmpl",
+    {
+      dbip = module.db.db_internal_ip
+    }
+  )
+  filename = "../../ansible/app.yml"
 }
+resource "local_file" "inventory_tmpl" {
+  content = templatefile("../../ansible/templates/inventory.tmpl",
+    {
+      db = module.db.external_ip_address_db
+      app = module.app.external_ip_address_app
+    }
+  )
+  filename = "../../ansible/inventory_tf"
+}
+
 #resource "local_file" "hosts_cfg" {
-#  content = <<-DOC
-#    
-#      app: ${var.external_ip_address_app}
-#      db: ${var.external_ip_address_db}
-#      DOC
-#  filename = "hosts"
-#}
-#resource "local_file" "hosts_cfg" {
-#  content = templatefile("hosts.tmpl",
-#    {
-#      app = module.app.external_ip_address_app
-#      db = module.db.external_ip_address_db
-#    }
-#  )
-#  filename = "hosts"
-#}
-#resource "local_file" "ansible_inventory" {
-#  content = templatefile("inventorytest.tmpl",
-#    {
-#      app_ip = { app_exip = var.yandex_compute_instance.app.network_interface.0.nat_ip_address },
-#      db_ip  = { db_exip = var.yandex_compute_instance.db.network_interface.0.nat_ip_address }
-#    }
-#  )
-#  filename = "inventorytest"
-#}
-#resource "local_file" "ansible_inventory" {
-#  content = templatefile("inventorytest.tmpl",
-#    {
-#      appserver = module.app.external_ip_address_app,
-#      dbserver  = module.db.db_internal_ip
-#    }
-#  )
-#  filename = "inventorytest"
+#  filename = "../../ansible/inventory_tf"
+#  content = <<EOF
+#[app]
+#appserver ansible_host=${module.app.external_ip_address_app}
+#[db]
+#dbserver ansible_host=${module.db.external_ip_address_db}
+#
+#  EOF
 #}
