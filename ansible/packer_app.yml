@@ -1,13 +1,9 @@
 ---
 - name: Install Ruby && Bundler
   hosts: all
-  user: ubuntu
   gather_facts: no
   become: true
   tasks:
-  - name: Apt update
-    ansible.builtin.apt:
-      update_cache: yes
   # Установим в цикле все зависимости
   - name: Install ruby and rubygems and required packages
     apt: "name={{ item }} state=present"

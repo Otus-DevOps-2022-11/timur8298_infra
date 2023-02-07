@@ -3,7 +3,7 @@
   hosts: all
   vars:
     mongo_bind_ip: 0.0.0.0 # <-- Переменная задается в блоке vars
-    db_host: 10.128.0.18 # <-- подставьте сюда ваш IP
+    db_host: 10.128.0.21 # <-- подставьте сюда ваш IP
   tasks:
     - name: Change mongo config file
       become: true # <-- Выполнить задание от root
