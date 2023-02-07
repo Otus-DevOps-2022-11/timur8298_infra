@@ -44,7 +44,7 @@ resource "local_file" "inventory_tmpl" {
       app = module.app.external_ip_address_app
     }
   )
-  filename = "../../ansible/inventory_tf"
+  filename = "../../ansible/inventory"
 }
 
 #resource "local_file" "hosts_cfg" {
