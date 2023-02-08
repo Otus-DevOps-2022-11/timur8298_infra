@@ -1,11 +1,11 @@
-#terraform {
-#  required_providers {
-#    yandex = {
-#      source = "yandex-cloud/yandex"
-#    }
-#  }
-#  required_version = ">= 0.13"
-#}
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
+  required_version = ">= 0.13"
+}
 resource "yandex_compute_instance" "db" {
   name = "reddit-db"
   labels = {
@@ -38,12 +38,12 @@ resource "yandex_compute_instance" "db" {
     agent       = false
     private_key = file(var.private_key_path)
   }
-  provisioner "file" {
-    content     = templatefile("${path.module}/files/mongod.conf.tmpl", { db_ip = yandex_compute_instance.db.network_interface.0.ip_address })
-    destination = "/tmp/mongod.conf"
-  }
+#  provisioner "file" {
+#    content     = templatefile("${path.module}/files/mongod.conf.tmpl", { db_ip = yandex_compute_instance.db.network_interface.0.ip_address })
+#    destination = "/tmp/mongod.conf"
+#  }
 
-  provisioner "remote-exec" {
-    script = "${path.module}/files/deploy.sh"
-  }
+#  provisioner "remote-exec" {
+#    script = "${path.module}/files/deploy.sh"
+#  }
 }
