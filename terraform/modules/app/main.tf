@@ -39,12 +39,33 @@ resource "yandex_compute_instance" "app" {
     agent       = false
     private_key = file(var.private_key_path)
   }
-#  provisioner "file" {
-#    content     = templatefile("${path.module}/files/puma.service.tmpl", { db_ip = var.db_ip })
-#    destination = "/tmp/puma.service"
-#  }
+}
+resource "yandex_vpc_network" "lab-net" {
+  name = "lab-network"
+}
 
-#  provisioner "remote-exec" {
-#    script = "${path.module}/files/deploy.sh"
-#  }
+resource "yandex_vpc_security_group" "nginx" {
+  name        = "app security"
+  description = "app security group"
+  network_id  = yandex_vpc_network.lab-net.id
+
+  labels = {
+    my-label = "my-label-value"
+  }
+
+  ingress {
+    protocol       = "TCP"
+    description    = "rule1 description"
+    v4_cidr_blocks = ["0.0.0.0/0"]
+    port           = 80
+  }
+
+  #  provisioner "file" {
+  #    content     = templatefile("${path.module}/files/puma.service.tmpl", { db_ip = var.db_ip })
+  #    destination = "/tmp/puma.service"
+  #  }
+
+  #  provisioner "remote-exec" {
+  #    script = "${path.module}/files/deploy.sh"
+  #  }
 }

@@ -1,4 +1,4 @@
-db_host: ${dbip}
+db_host: 10.128.0.11
 
 nginx_sites:
   default:

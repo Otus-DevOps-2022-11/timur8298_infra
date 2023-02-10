@@ -1,5 +1,4 @@
-db_host: ${dbip}
-
+db_host: 10.128.0.34
 nginx_sites:
   default:
     - listen 80
