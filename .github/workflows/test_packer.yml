@@ -18,4 +18,13 @@ jobs:
         ref: ${{ github.ref }}
 
     - name: packer validate app
-      run: packer validate -var-file=packer/variables.json.example packer/*.json
+      run: packer validate -var-file=packer/variables.json.example packer/app.json
+
+    - name: packer validate db
+      run: packer validate -var-file=packer/variables.json.example packer/db.json
+
+    - name: packer validate ubuntu16
+      run: packer validate -var-file=packer/variables.json.example packer/ubuntu16.json
+
+    - name: packer validate immutable
+      run: packer validate -var-file=packer/variables.json.example packer/immutable.json
