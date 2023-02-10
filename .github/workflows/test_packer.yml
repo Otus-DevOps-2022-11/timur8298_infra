@@ -18,4 +18,4 @@ jobs:
         ref: ${{ github.ref }}
 
     - name: packer validate app
-      run: packer validate -var-file=packer/variables.json.example packer/app.json
+      run: packer validate -var-file=packer/variables.json.example packer/*.json
