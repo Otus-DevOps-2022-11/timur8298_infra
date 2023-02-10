@@ -1,0 +1,21 @@
+#Задание с ⭐⭐: Настройка TravisCI
+name: Run test packer
+
+on:
+  push:
+    branches-ignore: main
+  pull_request:
+    branches-ignore: main
+
+jobs:
+  packer_check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+
+    - name: packer validate app
+      run: packer validate -var-file=packer/variables.json.example packer/app.json
