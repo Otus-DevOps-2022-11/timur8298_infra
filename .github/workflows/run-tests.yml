@@ -24,3 +24,25 @@ jobs:
 
     - name: Run tests
       run: curl https://raw.githubusercontent.com/express42/otus-homeworks/2022-08/run.sh | bash
+
+#Задание с ⭐⭐: Настройка TravisCI
+  packer_check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+
+    - name: packer validate app
+      run: packer validate -var-file=packer/variables.json.example packer/app.json
+
+    - name: packer validate db
+      run: packer validate -var-file=packer/variables.json.example packer/db.json
+
+    - name: packer validate ubuntu16
+      run: packer validate -var-file=packer/variables.json.example packer/ubuntu16.json
+
+    - name: packer validate immutable
+      run: packer validate -var-file=packer/variables.json.example packer/immutable.json
