@@ -28,3 +28,20 @@ jobs:
 
     - name: packer validate immutable
       run: packer validate -var-file=packer/variables.json.example packer/immutable.json
+
+  ansible_check:
+    runs-on: ubuntu-latest
+
+    env:
+      ANSIBLE_ROLES_PATH: ansible/roles
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+
+    - name: Run ansible-lint
+      uses: ansible/ansible-lint-action@main
+      with:
+        path: "ansible/playbooks/"
