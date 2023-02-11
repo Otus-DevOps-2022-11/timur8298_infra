@@ -1,7 +1,7 @@
 ---
 # .ansible-lint
 
-offline: true
+offline: false
 
 skip_list:
   - jdauphant.nginx
