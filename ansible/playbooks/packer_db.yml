@@ -19,7 +19,7 @@
     apt:
       name: mongodb-org
       state: present
-      
+
   # Включаем сервис
   - name: Configure service supervisor
     systemd:
