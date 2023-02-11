@@ -1,3 +1,8 @@
+---
+# .ansible-lint
+
+offline: true
+
 skip_list:
   - jdauphant.nginx
   - bundler
