@@ -11,5 +11,4 @@ skip_list:
 - fqcn
 
 warn_list:
-- ansible/roles/jdauphant.nginx
-- jdauphant.nginx
+- ansible/playbooks/deploy.yml
