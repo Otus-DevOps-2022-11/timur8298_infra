@@ -9,3 +9,7 @@ skip_list:
 - meta-incorrect
 - meta-no-info
 - fqcn
+
+warn_list:
+- ansible/roles/jdauphant.nginx
+- jdauphant.nginx
