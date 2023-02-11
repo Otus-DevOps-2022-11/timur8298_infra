@@ -1,7 +1,7 @@
 ---
 # .ansible-lint
-
-offline: false
+exclude_paths:
+- ansible/roles/jdauphant.nginx
 
 skip_list:
   - jdauphant.nginx

@@ -63,5 +63,5 @@ jobs:
       uses: ansible/ansible-lint-action@main
       with:
         path: "ansible/playbooks/" 
-        Options: -x SKIP_LIST
+
 
