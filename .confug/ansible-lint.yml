@@ -1,5 +1,3 @@
-mock_modules:
-  - bundler
-
-mock_roles:
+skip_list:
   - jdauphant.nginx
+  - bundler
