@@ -11,4 +11,4 @@ skip_list:
 - fqcn
 
 warn_list:
-- ansible/playbooks/deploy.yml
+- syntax-check ansible/playbooks/deploy.yml
