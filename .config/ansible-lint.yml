@@ -1,0 +1,4 @@
+---
+# .ansible-lint
+mock_modules:
+  - 'bundler'

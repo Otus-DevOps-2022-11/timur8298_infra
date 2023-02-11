@@ -4,3 +4,8 @@ repos:
     hooks:
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
+
+-   repo: https://github.com/ansible/ansible-lint
+    rev: v6.12.2 # put latest release tag from https://github.com/ansible/ansible-lint/releases/
+    hooks:
+    -   id: ansible-lint
