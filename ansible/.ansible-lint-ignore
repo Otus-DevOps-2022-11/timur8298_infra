@@ -1,1 +1,1 @@
-"ansible/playbooks/deploy.yml bundler # noqa syntax-check"
+"ansible/playbooks/deploy.yml bundler"
