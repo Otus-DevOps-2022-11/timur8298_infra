@@ -1,7 +1,7 @@
 ---
 # .ansible-lint
-exclude_paths:
-  - ansible/roles/jdauphant.nginx
+mock_modules:
+  - bundler
 
 skip_list:
   - yaml
@@ -9,4 +9,4 @@ skip_list:
   - meta-incorrect
   - meta-no-info
   - fqcn
-  - "noqa syntax-check"
+  - 'fqcn-builtins'
