@@ -1,1 +1,1 @@
-ansible/playbooks/deploy.yml bundle install
+"ansible/playbooks/deploy.yml bundle install"
