@@ -49,7 +49,9 @@ jobs:
       uses: ansible/ansible-lint-action@main
       with:
         path: "ansible/playbooks/" 
-        args: "-c .ansible-lint"
+        Options: 
+          -c
+          -p
 
   terraform_check:
     runs-on: ubuntu-latest
