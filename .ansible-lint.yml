@@ -9,4 +9,4 @@ skip_list:
   - meta-incorrect
   - meta-no-info
   - fqcn
-  - "noqa syntax-check"
+  - 'fqcn-builtins'
