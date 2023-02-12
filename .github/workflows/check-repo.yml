@@ -50,7 +50,7 @@ jobs:
       with:
         path: "ansible/playbooks/" 
         Options: 
-          -c
+          -c .ansible-lint.yml
           -p
 
   terraform_check:
