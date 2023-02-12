@@ -92,5 +92,23 @@ dbserver ansible_host=${module.db.external_ip_address_db}
 После модификации провижионеров в packer, вы падало в ошибку. Включил дебаг, после гугления проблемы нашел решение, прописал "use_proxy": false, после заработало.
 
 Задания со **
-Для создания динамической инвентаризации, по совету Владимира Дроздецкого, воспользовался terraform template. для чего создал 2 шаблона в папке templates (hosts.tmpl? inventory.tmpl)
+Для создания динамической инвентаризации, воспользовался terraform template. для чего создал 2 шаблона в папке templates (hosts.tmpl? inventory.tmpl)
 После запуска terraform apply, автоматически генерируются файлы app.yml, inventory_tf.
+
+#HW-10 Ansible роли, управление настройками нескольких окружений и best practices
+Созданы роли app и db. Созданы окружения stage и prod, настроено окружение по умолчанию.
+Созданы файлы с данными пользователей для каждого окружения, зашифрованы с помощью Ansible Vault. 
+vault.key сохранен вне репозитория.
+
+Задание с *
+Настроил шаблоны для динамического создания инфентори для окружений stage и prod
+При запуске terraform apply в соответствующем окружении, в соответствующем окружении динамически создаются инвентори файлы из шаблонов
+
+Задание с **
+packer validate для всех шаблонов
+ansible-lint для плейбуков Ansible
+terraform validate и tflint для окружений stage и prod
+
+[![Run tests for OTUS homework](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/run-tests.yml/badge.svg)](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/run-tests.yml)
+
+[![Run REPO](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/check-repo.yml/badge.svg)](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/check-repo.yml)
