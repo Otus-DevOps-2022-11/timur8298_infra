@@ -13,7 +13,7 @@
     owner: ubuntu
     group: ubuntu
 
-- name: enable puma
+- name: Enable puma
   systemd: name=puma enabled=yes
 
 - name: Show info about the env this host belongs to
