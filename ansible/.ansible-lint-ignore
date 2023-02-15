@@ -1,1 +1,1 @@
-deploy.yml bundler
+deploy.yml syntax-check[specific]

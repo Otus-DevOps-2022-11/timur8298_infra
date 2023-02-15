@@ -1,1 +1,1 @@
-ansible/playbooks/deploy.yml bundler
+ansible/playbooks/deploy.yml syntax-check[specific]
