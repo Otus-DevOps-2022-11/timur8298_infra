@@ -3,6 +3,9 @@
 mock_modules:
   - bundler
 
+mock_roles:
+  - jdauphant.nginx
+
 skip_list:
   - yaml
   - experimental
