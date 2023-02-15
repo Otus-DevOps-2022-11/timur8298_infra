@@ -15,7 +15,7 @@
       notify: restart puma
 
     - name: bundle install
-      bundler: # noqa syntax-check
+      bundler:
         state: present
         chdir: /home/ubuntu/reddit
 
