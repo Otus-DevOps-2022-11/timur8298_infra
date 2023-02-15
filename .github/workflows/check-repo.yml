@@ -44,6 +44,7 @@ jobs:
     - name: Galaxy Install
       run: |
         ansible-galaxy install -r ansible/environments/stage/requirements.yml
+        ansible --version
 
     - name: Run ansible-lint
       uses: ansible/ansible-lint-action@main
