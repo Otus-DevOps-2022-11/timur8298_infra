@@ -49,7 +49,7 @@ jobs:
     - name: Run ansible-lint
       uses: ansible/ansible-lint-action@main
       with:
-        path: "ansible/playbooks/site.yml" 
+        path: "ansible/playbooks/" 
 
   terraform_check:
     runs-on: ubuntu-latest
