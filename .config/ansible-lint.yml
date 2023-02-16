@@ -6,6 +6,7 @@ exclude_paths:
 
 mock_modules:
   - bundler
+  - jdauphant.nginx
 
 mock_roles:
   - jdauphant.nginx
