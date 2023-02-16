@@ -1,4 +1,4 @@
-# gitignore file 
+# gitignore file
 /packer/variables.json
 *.tfstate
 *.tfstate.*.backup
@@ -6,3 +6,4 @@
 *.tfvars
 .terraform/
 *.retry
+jdauphant.nginx

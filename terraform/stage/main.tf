@@ -35,7 +35,8 @@ resource "local_file" "app_yml" {
       dbip = module.db.db_internal_ip
     }
   )
-  filename = "../../ansible/app.yml"
+  file_permission = "0644"
+  filename = "../../ansible/environments/stage/group_vars/app"
 }
 resource "local_file" "inventory_tmpl" {
   content = templatefile("../../ansible/templates/inventory.tmpl",
@@ -44,7 +45,8 @@ resource "local_file" "inventory_tmpl" {
       app = module.app.external_ip_address_app
     }
   )
-  filename = "../../ansible/inventory"
+  file_permission = "0644"
+  filename = "../../ansible/environments/stage/inventory"
 }
 
 #resource "local_file" "hosts_cfg" {

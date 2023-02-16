@@ -65,10 +65,10 @@ packer build -var-file=./variables.json ./immutable.json
 запустить terraform apply в папке с окружением prod или stage проекта
 перейти по ссылке http://IP:9292, где IP адрес можно взять по итогам команды terraform apply (external_ip_address_app = "84.201.156.36)
 
-#HW-08 Управление конфигурацией. Знакомство с Ansible 
+#HW-08 Управление конфигурацией. Знакомство с Ansible
 Создан ansible-playbook clone.yml и inventory файл;
 На app была применена комманда, которая клонировала репозиторий с github;
-Была применена команда удаления репозитория reddit через модуль -m command -a 'rm -rf ~/reddit' 
+Была применена команда удаления репозитория reddit через модуль -m command -a 'rm -rf ~/reddit'
 Выполнен плейбук ansible-playbook clone.yml
 Из-за того, что ~/reddit был удален предыдущей командой, при выполнении плейбука он был установлен снова
 Дописал main.tf в папке stage, для формирования файла инвентори из выходных переменных результата выполнения terraform apply
@@ -94,3 +94,21 @@ dbserver ansible_host=${module.db.external_ip_address_db}
 Задания со **
 Для создания динамической инвентаризации, по совету Владимира Дроздецкого, воспользовался terraform template. для чего создал 2 шаблона в папке templates (hosts.tmpl? inventory.tmpl)
 После запуска terraform apply, автоматически генерируются файлы app.yml, inventory_tf.
+
+#HW-10 Ansible роли, управление настройками нескольких окружений и best practices
+Созданы роли app и db. Созданы окружения stage и prod, настроено окружение по умолчанию.
+Созданы файлы с данными пользователей для каждого окружения, зашифрованы с помощью Ansible Vault. 
+vault.key сохранен вне репозитория.
+
+Задание с *
+Настроил шаблоны для динамического создания инфентори для окружений stage и prod
+При запуске terraform apply в соответствующем окружении, в соответствующем окружении динамически создаются инвентори файлы из шаблонов
+
+Задание с **
+packer validate для всех шаблонов
+ansible-lint для плейбуков Ansible
+terraform validate и tflint для окружений stage и prod
+
+[![Run tests for OTUS homework](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/run-tests.yml/badge.svg)](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/run-tests.yml)
+
+[![Run REPO](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/check-repo.yml/badge.svg)](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/check-repo.yml)

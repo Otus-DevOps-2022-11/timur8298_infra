@@ -14,7 +14,7 @@
       notify: restart mongod
 
   handlers:
-  - name: restart mongod
+  - name: Restart mongod
     service: name=mongod state=restarted
 
 - name: Configure App
@@ -37,11 +37,11 @@
         owner: ubuntu
         group: ubuntu
 
-    - name: enable puma
+    - name: Enable puma
       systemd: name=puma enabled=yes
 
   handlers:
-  - name: reload puma
+  - name: Reload puma
     systemd: name=puma state=restarted
 
 - name: Deploy App
@@ -49,7 +49,7 @@
   tags: deploy-tag
   become: true
   tasks:
-    - name: git install
+    - name: Git install
       apt:
         name: git
         state: present
@@ -61,12 +61,12 @@
         version: monolith
       notify: restart puma
 
-    - name: bundle install
+    - name: Bundle install
       bundler:
         state: present
         chdir: /home/ubuntu/reddit
 
   handlers:
-  - name: restart puma
+  - name: Restart puma
     become: true
     systemd: name=puma state=restarted

@@ -12,7 +12,7 @@
         dest: /etc/mongod.conf # <-- Путь на удаленном хосте
         mode: 0644 # <-- Права на файл, которые нужно установить
       tags: db-tag # <-- Список тэгов для задачи
-    - name: git install
+    - name: Git install
       become: true
       apt:
         name: git
@@ -26,7 +26,7 @@
         dest: /etc/systemd/system/puma.service
       tags: app-tag
       notify: reload puma
-    - name: enable puma
+    - name: Enable puma
       become: true
       systemd: name=puma enabled=yes
       tags: app-tag
@@ -35,7 +35,7 @@
         src: templates/db_config.j2
         dest: /home/ubuntu/db_config
       tags: app-tag
-    - name: enable puma
+    - name: Enable puma
       become: true
       systemd: name=puma enabled=yes
       tags: app-tag
@@ -52,9 +52,9 @@
         chdir: /home/ubuntu/reddit # <-- В какой директории выполнить команду bundle
       tags: deploy-tag
   handlers: # <-- Добавим блок handlers и задачу
-  - name: restart mongod
+  - name: Restart mongod
     become: true
     service: name=mongod state=restarted
-  - name: reload puma
+  - name: Reload puma
     become: true
     systemd: name=puma state=restarted

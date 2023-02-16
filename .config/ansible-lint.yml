@@ -1,0 +1,21 @@
+---
+# .ansible-lint
+exclude_paths:
+- .github/
+- ansible/roles/jdauphant.nginx
+- ./ansible/roles/jdauphant.nginx
+
+mock_modules:
+  - bundler
+
+mock_roles:
+  - jdauphant.nginx
+
+skip_list:
+  - yaml
+  - experimental
+  - meta-incorrect
+  - meta-no-info
+  - fqcn
+  - 'fqcn-builtins'
+  - jinja
