@@ -2,11 +2,9 @@
 # .ansible-lint
 exclude_paths:
 - .github/
-- ansible/roles/jdauphant.nginx
 
 mock_modules:
   - bundler
-  - jdauphant.nginx
 
 mock_roles:
   - jdauphant.nginx
