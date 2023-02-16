@@ -6,6 +6,6 @@ repos:
     -   id: trailing-whitespace
 
 -   repo: https://github.com/ansible/ansible-lint
-    rev: v6.12.2 # put latest release tag from https://github.com/ansible/ansible-lint/releases/
+    rev: v6.12.2
     hooks:
     -   id: ansible-lint
