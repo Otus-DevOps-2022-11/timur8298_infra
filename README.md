@@ -112,3 +112,12 @@ terraform validate и tflint для окружений stage и prod
 [![Run tests for OTUS homework](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/run-tests.yml/badge.svg)](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/run-tests.yml)
 
 [![Run REPO](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/check-repo.yml/badge.svg)](https://github.com/Otus-DevOps-2022-11/timur8298_infra/actions/workflows/check-repo.yml)
+
+#HW-11 Локальная разработка Ansible ролей с Vagrant. Тестирование конфигурации
+Организовал плейбуки для Vagrant
+Задание сo *
+Дополнил конфигурацию Vagrant для работы проксирования приложения с помощью nginx
+Развернул окружение molecule, выполнил тесты
+Добавил тест test_socket_listening, чтобы проверять в тесте слушается ли порт 27017
+Изменил плейбуки packer_app.yml и packer_db.yml для использования ролей
+Изменил конфигурации packer для запуска провижининга с ипользованием ролей.
