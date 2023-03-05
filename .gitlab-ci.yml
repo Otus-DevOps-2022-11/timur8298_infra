@@ -48,7 +48,7 @@ deploy_dev_job:
 
 branch review:
   stage: review
-  image: docker:latest
+  image: docker:20.10.16
   services:
     - docker:dind
   before_script: []
