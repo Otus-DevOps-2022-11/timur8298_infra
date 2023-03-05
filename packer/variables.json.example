@@ -1,0 +1,6 @@
+{
+  "yc_folder_id": "123456",
+  "yc_key_path": "packer/key.json.example",
+  "yc_image_family": "ddd.img",
+  "yc_platform_id": "123456"
+}

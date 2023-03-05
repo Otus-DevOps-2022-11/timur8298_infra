@@ -1,0 +1,9 @@
+---
+- name: Install python for Ansible
+  import_playbook: base.yml
+- name: Configure MongoDB
+  import_playbook: db.yml
+- name: Configure App
+  import_playbook: app.yml
+- name: Deploy App
+  import_playbook: deploy.yml

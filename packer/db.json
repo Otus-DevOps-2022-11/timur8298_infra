@@ -1,0 +1,23 @@
+{
+    "builders": [
+        {
+            "type": "yandex",
+            "service_account_key_file": "{{user `yc_key_path`}}",
+            "folder_id": "{{user `yc_folder_id`}}",
+            "source_image_family": "{{user `yc_image_family`}}",
+            "image_name": "reddit-db-base-{{timestamp}}",
+            "image_family": "reddit-db-base",
+            "ssh_username": "ubuntu",
+            "use_ipv4_nat": true,
+            "platform_id": "{{user `yc_platform_id`}}"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "ansible",
+            "playbook_file": "ansible/playbooks/packer_db.yml",
+            "extra_arguments": ["--tags","install"],
+            "ansible_env_vars": ["ANSIBLE_ROLES_PATH={{ pwd }}/ansible/roles"]
+        }
+    ]
+}
