@@ -18,7 +18,6 @@ before_script:
 build_job:
   stage: build
   image: docker:latest
-  become: yes
   services:
     - docker:dind
   before_script: []
