@@ -25,6 +25,7 @@ build_job:
     - cd reddit
     - docker build -t reddit-$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA .
 
+
 test_unit_job:
   stage: test
   services:
