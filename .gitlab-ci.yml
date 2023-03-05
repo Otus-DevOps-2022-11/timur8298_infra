@@ -16,7 +16,7 @@ before_script:
 
 build_job:
   stage: build
-  image: docker:latest
+  image: docker:20.10.16
   services:
     - docker:dind
   before_script: []
