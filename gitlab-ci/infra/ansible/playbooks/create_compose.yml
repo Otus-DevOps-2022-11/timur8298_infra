@@ -1,0 +1,32 @@
+---
+- name: Create compose for gitlab-ci
+  hosts: gitlab-ci
+  become: yes
+  tasks:
+    - name: Create config dir
+      file:
+        dest: "/srv/gitlab/config"
+        state: directory
+        owner: ubuntu
+        group: docker
+
+    - name: Create data dir
+      file:
+        dest: "/srv/gitlab/data"
+        state: directory
+        owner: ubuntu
+        group: docker
+
+    - name: Create logs dir
+      file:
+        dest: "/srv/gitlab/logs"
+        state: directory
+        owner: ubuntu
+        group: docker
+
+    - name: Add docker-compose file
+      template:
+        src: docker-compose.j2
+        dest: /srv/gitlab/docker-compose.yml
+        owner: ubuntu
+        group: docker
